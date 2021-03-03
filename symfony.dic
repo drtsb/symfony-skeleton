@@ -1,0 +1,8 @@
+basepath
+codecept
+depfile
+deptrac
+phpstan
+squizlabs
+squiz
+dockerignore

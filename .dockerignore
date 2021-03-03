@@ -1,0 +1,42 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Symfony template
+
+# Logs (Symfony4)
+/var/log/*
+!var/log/.gitkeep
+
+# Parameters
+/app/config/parameters.yml
+/app/config/parameters.ini
+
+# Managed by Composer
+/app/bootstrap.php.cache
+/var/bootstrap.php.cache
+!bin/symfony_requirements
+/data/*
+/vendor/
+
+# Assets and user uploads
+/web/bundles/
+/web/uploads/
+
+# Build data
+/build/
+
+# Composer PHAR
+/composer.phar
+
+# Backup entities generated with doctrine:generate:entities command
+**/Entity/*~
+
+# Embedded web-server pid file
+/.web-server-pid
+
+.git
+.dockerignore
+.idea
+bitbucket-pipelines.yml
+docker-compose*.yml
+.deptrac.cache
+.phpcs-cache
+

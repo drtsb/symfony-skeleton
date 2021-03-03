@@ -1,0 +1,7 @@
+parameters:
+	level: 5
+	paths:
+		- /app/src
+		#- /app/tests
+	excludes_analyse:
+		- /app/tests/Support/_generated/*

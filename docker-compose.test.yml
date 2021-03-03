@@ -1,0 +1,47 @@
+version: "3.3"
+services:
+  sut:
+    image: symfony:local
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    entrypoint: /app/docker/run-tests.sh
+    networks:
+      app_net_test:
+    env_file: .env.test
+    depends_on:
+      - rmq_sut
+      - pgsql_sut
+      - redis_sut
+    volumes:
+      - .:/app:delegated
+
+  rmq_sut:
+    image: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      app_net_test:
+
+  pgsql_sut:
+    image: postgres:${DATABASE_VERSION}
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      app_net_test:
+    volumes:
+      - ./docker/postgres:/docker-entrypoint-initdb.d
+
+  redis_sut:
+    image: redis
+    container_name: symfony-redis-test
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    networks:
+      app_net_test:
+
+networks:
+  app_net_test:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"

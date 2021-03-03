@@ -1,0 +1,62 @@
+paths:
+  - ./src
+exclude_files:
+  - .*test.*
+layers:
+  - name: Api
+    collectors:
+      - type: directory
+        regex: ./src/Module/\w+/Api/.*
+      - type: directory
+        regex: ./src/Shared/Api/.*
+
+  - name: Application
+    collectors:
+      - type: directory
+        regex: ./src/Module/\w+/Application/.*
+      - type: directory
+        regex: ./src/Shared/Application/.*
+
+  - name: Domain
+    collectors:
+      - type: directory
+        regex: ./src/Module/\w+/Domain/.*
+      - type: directory
+        regex: ./src/Shared/Domain/.*
+
+  - name: Infrastructure
+    collectors:
+      - type: directory
+        regex: ./src/Module/\w+/Infrastructure/.*
+      - type: directory
+        regex: ./src/Shared/Infrastructure/.*
+
+  - name: UI
+    collectors:
+      - type: directory
+        regex: ./src/Module/\w+/UI/.*
+      - type: directory
+        regex: ./src/Shared/UI/.*
+
+  - name: Vendor
+    collectors:
+      - type: directory
+        regex: ./vendor/.*
+
+ruleset:
+  Domain:
+  Application:
+    - Domain
+    - Infrastructure
+  Api:
+    - Application
+    - Domain
+  UI:
+    - Application
+    - Domain
+    - Infrastructure
+  Infrastructure:
+    - Domain
+    - Application
+    - Vendor
+    - Api

@@ -1,0 +1,14 @@
+namespace: App\Tests\Support
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/Support
+    envs: tests/_envs
+bootstrap: bootstrap.php
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+params:
+    - .env.test
