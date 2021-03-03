@@ -1,0 +1,4 @@
+doctrine:
+  dbal:
+    types:
+      user_user_roles: 'App\User\Infrastructure\Persistence\Doctrine\Mapping\User\UserRolesType'

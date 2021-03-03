@@ -1,5 +1,9 @@
-controllers_shared:
+shared:
   resource: ../../src/Shared/UI/Controller/
+  type: annotation
+
+module_demo:
+  resource: ../../src/Demo/UI/Controller/
   type: annotation
 
 kernel:

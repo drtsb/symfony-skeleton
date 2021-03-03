@@ -1,0 +1,17 @@
+{% extends 'user/base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('user.index') }}">Users</a></li>
+        <li class="breadcrumb-item active">Edit User</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    <h1>Edit User</h1>
+
+    {{ include('user/user/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

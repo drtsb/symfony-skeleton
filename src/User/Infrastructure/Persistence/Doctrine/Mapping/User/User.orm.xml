@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\User\Domain\Aggregate\User\User"
+            table="users"
+            schema="users"
+            repository-class="App\User\Infrastructure\Persistence\Doctrine\Repository\UserRepository"
+    >
+
+        <unique-constraints>
+            <unique-constraint columns="email" name="u_user_email" />
+        </unique-constraints>
+
+        <id name="id" type="uuid" column="id" />
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="false" />
+
+        <embedded name="email" class="App\User\Domain\Aggregate\User\UserEmail" use-column-prefix="false" />
+
+        <embedded name="passwordHash" class="App\User\Domain\Aggregate\User\UserPasswordHash" use-column-prefix="false" />
+
+        <embedded name="status" class="App\User\Domain\Aggregate\User\UserStatus" use-column-prefix="false" />
+
+        <field name="roles" column="roles" type="user_user_roles" nullable="false" unique="false">
+            <options>
+                <option name="jsonb">true</option>
+            </options>
+        </field>
+
+        <field name="lastLoginTime" column="last_login_time" type="datetime" nullable="true" />
+    </entity>
+
+</doctrine-mapping>

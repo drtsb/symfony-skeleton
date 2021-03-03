@@ -1,0 +1,48 @@
+{% extends 'user/base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item active">Users</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    <h1>Users</h1>
+
+    <p>
+        <a href="{{ path('user.new') }}" class="btn btn-success">Create</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Created At</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles|json_encode() }}</td>
+                <td>{{ user.status }}</td>
+                <td>
+                    <a href="{{ path('user.show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('user.edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

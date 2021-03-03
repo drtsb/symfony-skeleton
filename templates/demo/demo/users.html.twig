@@ -1,0 +1,28 @@
+{% extends 'demo/base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item active">Users</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    <h1>Users</h1>
+
+    <div class="card-deck">
+        {% for user in users %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://via.placeholder.com/400x200?text=User+Photo" alt="User Photo">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ user.email }}</h5>
+                </div>
+            </div>
+        {% else %}
+            <h3>no records found</h3>
+        {% endfor %}
+    </div>
+
+{% endblock %}
