@@ -30,12 +30,12 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN ln -sf /dev/stderr /tmp/php${PHP_VERSION}-fpm.log
 
-RUN groupadd -g 1008 nginx &&\
-    useradd -u 1008 -g 1008 nginx &&\
-    mkdir /run/php &&\
-    mkdir -p /home/nginx/.composer &&\
+RUN groupadd -g 1008 nginx && \
+    useradd -u 1008 -g 1008 nginx && \
+    mkdir /run/php && \
+    mkdir -p /home/nginx/.composer && \
     chown -R nginx:nginx /home/nginx && \
-    mkdir -p /var/log/supervisor &&\
+    mkdir -p /var/log/supervisor && \
     chown -R nginx:nginx /var/log/supervisor
 
 COPY ./docker/app/php/ /etc/php/${PHP_VERSION}/
@@ -45,15 +45,14 @@ COPY . /app
 COPY ./docker/app/app-entrypoint.sh /app-entrypoint.sh
 WORKDIR /app
 
-RUN chown -R nginx:nginx /app && chmod +x /app/docker/run.sh && chmod +x /app/docker/run-tests.sh && \
-    chmod +x /app/docker/run-init.sh && chmod +x /app/docker/run-analysis.sh && su nginx -c "composer install -o" && \
+RUN chown -R nginx:nginx /app && \
+    chmod +x /app/docker/app/*.sh && \
     chmod +x /app-entrypoint.sh && \
-    rm -rf ~/.composer/cache/
-
-#RUN cat .env.test > .env \
-#    && php /app/bin/console cache:clear \
-#    && php /app/bin/console assets:install --no-interaction \
-#    && rm -rf .env
+    su nginx -c "composer install -o" && \
+    su nginx -c "rm -rf ~/.composer/cache/" && \
+    cat .env.test > .env && \
+    su nginx -c "php bin/console assets:install" && \
+    rm -rf /app/var/cache/*
 
 EXPOSE 9000
 
