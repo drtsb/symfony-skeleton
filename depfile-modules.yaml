@@ -14,29 +14,5 @@ layers:
           - type: directory
             regex: ./src/Shared/Infrastructure/Adapter/.*
 
-  - name: User
-    collectors:
-      - type: bool
-        must:
-          - type: directory
-            regex: ./src/Module/User/.*
-        must_not:
-          - type: directory
-            regex: ./src/Module/User/Infrastructure/Adapter/.*
-
-  - name: Example
-    collectors:
-      - type: bool
-        must:
-          - type: directory
-            regex: ./src/Module/Example/.*
-        must_not:
-          - type: directory
-            regex: ./src/Module/Example/Infrastructure/Adapter/.*
-
 ruleset:
   Shared:
-  User:
-    - Shared
-  Example:
-    - Shared

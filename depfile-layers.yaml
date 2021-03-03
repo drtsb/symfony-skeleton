@@ -6,37 +6,27 @@ layers:
   - name: Api
     collectors:
       - type: directory
-        regex: ./src/Module/\w+/Api/.*
-      - type: directory
-        regex: ./src/Shared/Api/.*
+        regex: ./src/\w+/Api/.*
 
   - name: Application
     collectors:
       - type: directory
-        regex: ./src/Module/\w+/Application/.*
-      - type: directory
-        regex: ./src/Shared/Application/.*
+        regex: ./src/\w+/Application/.*
 
   - name: Domain
     collectors:
       - type: directory
-        regex: ./src/Module/\w+/Domain/.*
-      - type: directory
-        regex: ./src/Shared/Domain/.*
+        regex: ./src/\w+/Domain/.*
 
   - name: Infrastructure
     collectors:
       - type: directory
-        regex: ./src/Module/\w+/Infrastructure/.*
-      - type: directory
-        regex: ./src/Shared/Infrastructure/.*
+        regex: ./src/\w+/Infrastructure/.*
 
   - name: UI
     collectors:
       - type: directory
-        regex: ./src/Module/\w+/UI/.*
-      - type: directory
-        regex: ./src/Shared/UI/.*
+        regex: ./src/\w+/UI/.*
 
   - name: Vendor
     collectors:
