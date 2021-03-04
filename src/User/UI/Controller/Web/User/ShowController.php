@@ -17,7 +17,7 @@ final class ShowController extends AbstractController
     {
     }
 
-    #[Route('/user/show', name: 'user.show', methods: ['GET'])]
+    #[Route('/user/{id}', name: 'user.show', methods: ['GET'])]
     public function __invoke(string $id): Response
     {
         $envelope = $this->queryBus->dispatch(new ShowQuery($id));

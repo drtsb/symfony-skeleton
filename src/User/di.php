@@ -7,7 +7,12 @@ namespace App\Shared;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $di): void {
-    $services = $di->services();
+    $services = $di
+        ->services()
+        ->defaults()
+        ->autowire()
+        ->autoconfigure()
+    ;
 
     $services->load('App\User\UI\Controller\\', 'UI/Controller')
         ->tag('controller.service_arguments');

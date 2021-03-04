@@ -22,7 +22,7 @@ final class ShowQueryDto extends DataTransferObject
 
     public array $roles;
 
-    public DateTimeInterface $lastLoginTime;
+    public ?DateTimeInterface $lastLoginTime = null;
 
     public static function createFromUser(User $user): self
     {
