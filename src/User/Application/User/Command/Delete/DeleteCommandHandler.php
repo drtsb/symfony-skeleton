@@ -11,14 +11,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class DeleteCommandHandler implements CommandHandlerInterface
 {
-    private UserRepositoryInterface $repository;
-
-    private EntityManagerInterface $entityManager;
-
-    public function __construct(UserRepositoryInterface $repository, EntityManagerInterface $entityManager)
+    public function __construct(private UserRepositoryInterface $repository, private EntityManagerInterface $entityManager)
     {
-        $this->repository = $repository;
-        $this->entityManager = $entityManager;
     }
 
     /**

@@ -86,7 +86,7 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
         try {
             $this->getEntityManager()->persist($user);
             $this->getEntityManager()->flush();
-        } catch (UniqueConstraintViolationException $exception) {
+        } catch (UniqueConstraintViolationException) {
             throw new UserAlreadyExistsException(
                 sprintf('User with email `%s` already exists.', $user->getEmail()->getValue())
             );

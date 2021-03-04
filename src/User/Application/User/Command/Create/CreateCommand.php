@@ -8,9 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class CreateCommand
 {
-    /**
-     * @Assert\Email()
-     */
+    #[\Symfony\Component\Validator\Constraints\Email]
     public string $email;
 
     /**

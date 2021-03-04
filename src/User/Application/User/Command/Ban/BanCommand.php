@@ -8,14 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class BanCommand
 {
-    /**
-     * @Assert\NotBlank()
-     */
-    private string $id;
-
-    private function __construct(string $id)
-    {
-        $this->id = $id;
+    private function __construct(
+        /**
+         * @Assert\NotBlank()
+         */
+        private string $id
+    ) {
     }
 
     public static function create(string $id): self

@@ -21,12 +21,9 @@ final class CreateUserCommand extends Command
 {
     public const COMMAND_NAME = 'app:user:create';
 
-    private MessageBusInterface $commandBus;
-
-    public function __construct(MessageBusInterface $commandBus)
+    public function __construct(private MessageBusInterface $commandBus)
     {
         parent::__construct(self::COMMAND_NAME);
-        $this->commandBus = $commandBus;
     }
 
     protected function configure(): void

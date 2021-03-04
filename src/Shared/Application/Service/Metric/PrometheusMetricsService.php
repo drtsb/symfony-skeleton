@@ -17,14 +17,10 @@ final class PrometheusMetricsService implements PrometheusMetricsServiceInterfac
 
     private RenderTextFormat $renderer;
 
-    private PrometheusGeneratorInterface $generator;
-
-    public function __construct(PrometheusGeneratorInterface $generator)
+    public function __construct(private PrometheusGeneratorInterface $generator)
     {
         $this->registry = new CollectorRegistry(new InMemory());
         $this->renderer = new RenderTextFormat();
-
-        $this->generator = $generator;
     }
 
     /**

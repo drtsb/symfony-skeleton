@@ -14,9 +14,7 @@ final class EditCommand
      */
     public string $id;
 
-    /**
-     * @Assert\Email()
-     */
+    #[\Symfony\Component\Validator\Constraints\Email]
     public string $email;
 
     /**

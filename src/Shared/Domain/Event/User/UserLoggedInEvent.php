@@ -11,14 +11,8 @@ final class UserLoggedInEvent implements DomainEventInterface
 {
     private const DATE_FORMAT = 'Y-m-d H:i:s';
 
-    private string $email;
-
-    private string $time;
-
-    private function __construct(string $email, string $time)
+    private function __construct(private string $email, private string $time)
     {
-        $this->email = $email;
-        $this->time = $time;
     }
 
     public static function create(string $email, DateTimeImmutable $time): self

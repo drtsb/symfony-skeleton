@@ -9,11 +9,8 @@ use App\User\Api\UserApiInterface;
 
 final class UserAdapter implements UserAdapterInterface
 {
-    private UserApiInterface $api;
-
-    public function __construct(UserApiInterface $api)
+    public function __construct(private UserApiInterface $api)
     {
-        $this->api = $api;
     }
 
     /**

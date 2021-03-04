@@ -10,11 +10,8 @@ use App\User\Domain\Repository\UserRepositoryInterface;
 
 final class UserApi implements UserApiInterface
 {
-    private UserRepositoryInterface $repository;
-
-    public function __construct(UserRepositoryInterface $repository)
+    public function __construct(private UserRepositoryInterface $repository)
     {
-        $this->repository = $repository;
     }
 
     /**

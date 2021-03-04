@@ -9,11 +9,8 @@ use App\Shared\Infrastructure\MessageBus\QueryHandlerInterface;
 
 final class IndexQueryHandler implements QueryHandlerInterface
 {
-    private UserRepositoryInterface $userRepository;
-
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(private UserRepositoryInterface $userRepository)
     {
-        $this->userRepository = $userRepository;
     }
 
     public function __invoke(IndexQuery $query): IndexQueryDto

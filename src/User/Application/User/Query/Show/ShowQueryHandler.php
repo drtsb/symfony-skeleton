@@ -10,11 +10,8 @@ use App\Shared\Infrastructure\MessageBus\QueryHandlerInterface;
 
 final class ShowQueryHandler implements QueryHandlerInterface
 {
-    private UserRepositoryInterface $userRepository;
-
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(private UserRepositoryInterface $userRepository)
     {
-        $this->userRepository = $userRepository;
     }
 
     /**

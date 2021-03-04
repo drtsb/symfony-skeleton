@@ -15,12 +15,8 @@ use InvalidArgumentException;
 
 final class CreateCommandHandler implements CommandHandlerInterface
 {
-    private UserRepositoryInterface $repository;
-
-    public function __construct(
-        UserRepositoryInterface $repository
-    ) {
-        $this->repository = $repository;
+    public function __construct(private UserRepositoryInterface $repository)
+    {
     }
 
     /**

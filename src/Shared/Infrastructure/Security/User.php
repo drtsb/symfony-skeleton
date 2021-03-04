@@ -10,24 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class User implements UserInterface
 {
-    private UuidInterface $id;
-
-    private string $email;
-
-    private string $passwordHash;
-
-    private array $roles;
-
-    private function __construct(
-        UuidInterface $id,
-        string $email,
-        string $passwordHash,
-        array $roles
-    ) {
-        $this->id = $id;
-        $this->email = $email;
-        $this->passwordHash = $passwordHash;
-        $this->roles = $roles;
+    private function __construct(private UuidInterface $id, private string $email, private string $passwordHash, private array $roles)
+    {
     }
 
     public static function createFromDto(UserAuthenticationDto $dto): self

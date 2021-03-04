@@ -31,18 +31,8 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public const LOGIN_ROUTE = 'security.login';
 
-    private UrlGeneratorInterface $urlGenerator;
-    private CsrfTokenManagerInterface $csrfTokenManager;
-    private MessageBusInterface $eventBus;
-
-    public function __construct(
-        UrlGeneratorInterface $urlGenerator,
-        CsrfTokenManagerInterface $csrfTokenManager,
-        MessageBusInterface $eventBus
-    ) {
-        $this->urlGenerator = $urlGenerator;
-        $this->csrfTokenManager = $csrfTokenManager;
-        $this->eventBus = $eventBus;
+    public function __construct(private UrlGeneratorInterface $urlGenerator, private CsrfTokenManagerInterface $csrfTokenManager, private MessageBusInterface $eventBus)
+    {
     }
 
     public function supports(Request $request): bool

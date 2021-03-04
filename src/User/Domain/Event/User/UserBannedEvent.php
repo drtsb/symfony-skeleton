@@ -9,11 +9,8 @@ use App\Shared\Domain\Event\DomainEventInterface;
 
 final class UserBannedEvent implements DomainEventInterface
 {
-    public string $userId;
-
-    private function __construct(string $userId)
+    private function __construct(public string $userId)
     {
-        $this->userId = $userId;
     }
 
     public static function create(User $user): self

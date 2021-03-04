@@ -13,13 +13,10 @@ use Exception;
 
 final class UserLoggedInEventHandler implements EventHandlerInterface
 {
-    private UserRepositoryInterface $userRepository;
-    private EntityManagerInterface $entityManager;
-
-    public function __construct(UserRepositoryInterface $userRepository, EntityManagerInterface $entityManager)
-    {
-        $this->userRepository = $userRepository;
-        $this->entityManager = $entityManager;
+    public function __construct(
+        private UserRepositoryInterface $userRepository,
+        private EntityManagerInterface $entityManager
+    ) {
     }
 
     /**

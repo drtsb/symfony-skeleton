@@ -15,12 +15,9 @@ final class ListUsersCommand extends Command
 {
     public const COMMAND_NAME = 'app:user:list';
 
-    private UserRepositoryInterface $userRepository;
-
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(private UserRepositoryInterface $userRepository)
     {
         parent::__construct(self::COMMAND_NAME);
-        $this->userRepository = $userRepository;
     }
 
     protected function configure(): void

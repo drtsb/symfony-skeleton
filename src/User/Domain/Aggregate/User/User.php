@@ -14,35 +14,17 @@ use InvalidArgumentException;
 
 final class User extends AggregateRoot
 {
-    private Uuid $id;
-
-    private DateTimeInterface $createdAt;
-
-    private UserEmail $email;
-
-    private UserPasswordHash $passwordHash;
-
-    private UserStatus $status;
-
     /** @var UserRole[] */
     private array $roles = [];
 
-    private ?DateTimeInterface $lastLoginTime = null;
-
     private function __construct(
-        Uuid $id,
-        DateTimeImmutable $createdAt,
-        UserEmail $email,
-        UserPasswordHash $passwordHash,
-        UserStatus $status,
-        ?DateTimeImmutable $lastLoginTime = null
+        private Uuid $id,
+        private DateTimeInterface $createdAt,
+        private UserEmail $email,
+        private UserPasswordHash $passwordHash,
+        private UserStatus $status,
+        private ?DateTimeInterface $lastLoginTime = null
     ) {
-        $this->id = $id;
-        $this->createdAt = $createdAt;
-        $this->email = $email;
-        $this->passwordHash = $passwordHash;
-        $this->status = $status;
-        $this->lastLoginTime = $lastLoginTime;
     }
 
     /**

@@ -12,11 +12,8 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 final class UserProvider implements UserProviderInterface
 {
-    private UserAdapterInterface $userAdapter;
-
-    public function __construct(UserAdapterInterface $userAdapter)
+    public function __construct(private UserAdapterInterface $userAdapter)
     {
-        $this->userAdapter = $userAdapter;
     }
 
     /**
@@ -37,7 +34,7 @@ final class UserProvider implements UserProviderInterface
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (!$user instanceof User) {
-            throw new UnsupportedUserException(sprintf('Invalid user class "%s".', get_class($user)));
+            throw new UnsupportedUserException(sprintf('Invalid user class "%s".', $user::class));
         }
 
         return $user;

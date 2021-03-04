@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain\ValueObject;
 
-abstract class StringValueObject
+abstract class StringValueObject implements \Stringable
 {
     protected string $value;
 

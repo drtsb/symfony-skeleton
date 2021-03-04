@@ -21,12 +21,9 @@ final class UnbanUserCommand extends Command
 
     private const ARGUMENT_ID = 'id';
 
-    private MessageBusInterface $commandBus;
-
-    public function __construct(MessageBusInterface $commandBus)
+    public function __construct(private MessageBusInterface $commandBus)
     {
         parent::__construct(self::COMMAND_NAME);
-        $this->commandBus = $commandBus;
     }
 
     /**

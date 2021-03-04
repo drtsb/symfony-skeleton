@@ -8,13 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class DeleteCommand
 {
-    /**
-     * @Assert\NotBlank()
-     */
-    public string $id;
-
-    public function __construct(string $id)
+    public function __construct(
+        /**
+         * @Assert\NotBlank()
+         */
+        public string $id
+    )
     {
-        $this->id = $id;
     }
 }
