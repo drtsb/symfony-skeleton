@@ -5,14 +5,13 @@ Symfony DDD Skeleton
 
 ```
 src/
-    Module/
-        User/
-            Api/                Интерфейс для внешнего взаимодействия
-            Application/        Службы приложения, команды, хэндлеры и т.п.
-            Domain/             Доменная модель
-            Infrastructure/     Инфраструктура: хранение данных, метрики и т.п.
-                Adapter/        Предохранительный слой: адаптеры к интерфейсам других модулей
-            UI/                 Веб-контроллеры, REST, консольные команды и т.п.
+    SomeModule/
+        Api/                Интерфейс для внешнего взаимодействия
+        Application/        Службы приложения, команды, хэндлеры и т.п.
+        Domain/             Доменная модель
+        Infrastructure/     Хранение данных, метрики и т.п.
+            Adapter/        Предохранительный слой: адаптеры к интерфейсам других модулей
+        UI/                 Веб-контроллеры, REST, консольные команды и т.п.
     Shared/
         Application/
         Domain/
@@ -45,12 +44,12 @@ make init
 #### Миграции
 Общие миграции хранятся в _src/Shared/Infrastructure/Persistence/Doctrine/Migration_.
 
-Для модулей в _src/Module/-ModuleName-/Infrastructure/Persistence/Doctrine/Migration_. При добавлении нового модуля необходимо прописать путь к каталогу с миграциями в _config/packages/doctrine_migrations.yaml_
+Для модулей в _src/-ModuleName-/Infrastructure/Persistence/Doctrine/Migration_. При добавлении нового модуля необходимо прописать путь к каталогу с миграциями в _config/packages/doctrine_migrations.yaml_
 
 В postgres можно разделять таблицы из разных модулей с помощью схем.
 
 #### Doctrine
-Маппинги и кастомные типы хранятся в _src/Module/-ModuleName-/Infrastructure/Persistence/Doctrine_
+Маппинги и кастомные типы хранятся в _src/-ModuleName-/Infrastructure/Persistence/Doctrine_
 Их необходимо регистрировать в _config/packages/doctrine/-module-name-/mappings.yaml_ и _config/packages/doctrine/-module-name-/types.yaml_ соответственно.
 
 #### Консольные команды
@@ -65,6 +64,13 @@ php bin/console app:init:all
 Метрики доступны по адресу _/metrics/prometheus_
 
 Для добавления новой метрики достаточно реализовать интерфейс **App\Shared\Infrastructure\Metric\MetricInterface**
+
+####Проверки
+Доступны две проверки:
+
+_/check/health_ - всегда отвечает **200**
+
+_/check/readiness_ - отвечает **200**, если есть соединение до базы, иначе - **500**
 
 ###TESTS
 
