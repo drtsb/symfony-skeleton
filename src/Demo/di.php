@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared;
+namespace App\Demo;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
