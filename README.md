@@ -52,6 +52,63 @@ make init
 Маппинги и кастомные типы хранятся в _src/-ModuleName-/Infrastructure/Persistence/Doctrine_
 Их необходимо регистрировать в _config/packages/doctrine/-module-name-/mappings.yaml_ и _config/packages/doctrine/-module-name-/types.yaml_ соответственно.
 
+#### Message Bus
+В качестве шины сообщений используется [Symfony Messenger](https://symfony.com/doc/current/components/messenger.html).
+
+Посмотреть список сообщений и их обработчики можно с помощью команды
+```                                                                         
+php bin/console debug:messenger                                             
+```                                                                         
+
+По умолчанию шина работает в синхронном режиме.
+
+##### Events
+
+Для событий используется шина **event.bus**, у каждого сообщения может быть 0 и более обработчиков.
+Чтобы отправить в нее сообщение необходимо внедрить с помощью контейнера зависимостей **MessageBusInterface $eventBus**
+
+```php  
+    private MessageBusInterface $eventBus;
+
+    public function __construct(MessageBusInterface $eventBus)
+    {
+        $this->eventBus = $eventBus;
+    }
+
+    public function test(): void        
+    {                                                                 
+        $this->eventBus->dispatch(new Event());                                  
+    }                                                                 
+```
+
+Обработчики событий хранятся в каталогах _src/-ModuleName-/Application_.
+Они должны реализовывать интерфейс _src/Shared/Infrastructure/MessageBus/EventHandlerInterface_,
+
+По умолчанию
+
+##### Commands
+
+Для команд используется шина **command.bus**, у каждого сообщения должен быть ровно один обработчик.
+Чтобы отправить в нее сообщение необходимо внедрить с помощью контейнера зависимостей **MessageBusInterface $commandBus**
+
+```php                                                                                                                                  
+    private MessageBusInterface $commandBus;                                                                                              
+                                                                                                                                        
+    public function __construct(MessageBusInterface $commandBus)                                                                          
+    {                                                                                                                                   
+        $this->commandBus = $commandBus;                                                                                                    
+    }                                                                                                                                   
+                                                                                                                                        
+    public function test(): void                                                                                                        
+    {                                                                                                                                   
+        $this->commandBus->dispatch(new Command());                                                                                         
+    }                                                                                                                                   
+```                                                                                                                                     
+
+Обработчики команд хранятся в каталогах _src/-ModuleName-/Application_.
+Они должны реализовывать интерфейс _src/Shared/Infrastructure/MessageBus/CommandHandlerInterface_
+
+
 #### Консольные команды
 
 Запуск всех инитеров
