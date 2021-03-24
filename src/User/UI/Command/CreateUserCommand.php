@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Command;
 
-use App\User\Application\User\Command\Create\CreateCommand;
+use App\User\Application\Command\User\Create\CreateCommand;
 use App\User\Domain\Aggregate\User\UserRole;
 use App\Shared\UI\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Controller\Web\User;
 
-use App\User\Application\User\Command\Delete\DeleteCommand;
+use App\User\Application\Command\User\Delete\DeleteCommand;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

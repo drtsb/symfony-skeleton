@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\UI\Controller\Web\User;
 
-use App\User\Application\User\Command\Edit\EditCommand;
-use App\User\Application\User\Command\Edit\EditForm;
+use App\User\Application\Command\User\Edit\EditCommand;
+use App\User\Application\Command\User\Edit\EditForm;
 use App\User\Domain\Aggregate\User\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Exception\LogicException;

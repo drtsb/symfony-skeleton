@@ -17,18 +17,15 @@ return static function (ContainerConfigurator $di): void {
         ->services()
         ->defaults()
         ->autowire()
-        ->autoconfigure()
-    ;
+        ->autoconfigure();
 
-    $services->load('App\\', '../../src/*')
+    $services->load('App\\', '../*')
         ->exclude(
             [
                 '../{Kernel.php}',
+                '../**/{*CommandHandler.php,*QueryHandler.php,*EventHandler.php}',
             ]
         );
-
-    $services->load('App\Shared\UI\Controller\\', 'UI/Controller')
-        ->tag('controller.service_arguments');
 
     $services
         ->instanceof(InitCommand::class)
@@ -43,4 +40,7 @@ return static function (ContainerConfigurator $di): void {
 
     $services->set(PrometheusGenerator::class)
         ->args([tagged_iterator('app.metric')]);
+
+    $services->load('App\Shared\UI\Controller\\', 'UI/Controller')
+        ->tag('controller.service_arguments');
 };

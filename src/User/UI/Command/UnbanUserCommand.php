@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Command;
 
-use App\User\Application\User\Command\Unban\UnbanCommand;
+use App\User\Application\Command\User\Unban\UnbanCommand;
 use App\Shared\UI\Command\Command;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Exception\InvalidArgumentException;

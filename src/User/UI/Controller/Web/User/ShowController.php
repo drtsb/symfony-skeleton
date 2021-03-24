@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Controller\Web\User;
 
-use App\User\Application\User\Query\Show\ShowQuery;
+use App\User\Application\Query\User\Show\ShowQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;

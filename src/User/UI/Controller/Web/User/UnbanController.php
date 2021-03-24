@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Controller\Web\User;
 
-use App\User\Application\User\Command\Unban\UnbanCommand;
+use App\User\Application\Command\User\Unban\UnbanCommand;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

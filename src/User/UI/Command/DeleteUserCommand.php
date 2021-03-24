@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Command;
 
-use App\User\Application\User\Command\Delete\DeleteCommand;
+use App\User\Application\Command\User\Delete\DeleteCommand;
 use App\Shared\UI\Command\Command;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Exception\InvalidArgumentException;

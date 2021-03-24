@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\UI\Command;
 
-use App\User\Application\User\Command\Ban\BanCommand;
+use App\User\Application\Command\User\Ban\BanCommand;
 use App\Shared\UI\Command\Command;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Exception\InvalidArgumentException;

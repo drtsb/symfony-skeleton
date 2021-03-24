@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\UI\Controller\Web\User;
 
-use App\User\Application\User\Command\Create\CreateCommand;
-use App\User\Application\User\Command\Create\CreateForm;
+use App\User\Application\Command\User\Create\CreateCommand;
+use App\User\Application\Command\User\Create\CreateForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\HttpFoundation\Request;
