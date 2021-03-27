@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\UI\Controller\Check;
+namespace App\Shared\UI\Controller\Web\Check;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

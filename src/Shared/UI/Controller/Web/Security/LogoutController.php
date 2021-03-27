@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\UI\Controller\Security;
+namespace App\Shared\UI\Controller\Web\Security;
 
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
