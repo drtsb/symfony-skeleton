@@ -1,7 +1,7 @@
 Symfony DDD Skeleton
-================
+====================
 
-###Структура Каталогов
+### Структура Каталогов
 
 ```
 src/
@@ -25,7 +25,7 @@ src/
 
 Внутри каждого модуля также есть разделение на слои: UI, Application, Domain, Infrastructure
 
-###INSTALLATION
+### INSTALLATION
 
 Скопировать файл _.env.example_ в _.env_ и заполнить реальными учетными данными при необходимости.
 
@@ -39,7 +39,7 @@ make up
 make init
 ```
 
-###USAGE
+### USAGE
 
 #### Миграции
 Общие миграции хранятся в _src/Shared/Infrastructure/Persistence/Doctrine/Migration_.
@@ -59,20 +59,21 @@ make init
 php bin/console app:init:all
 ```
 
-####METRICS
+#### METRICS
 
 Метрики доступны по адресу _/metrics/prometheus_
 
 Для добавления новой метрики достаточно реализовать интерфейс **App\Shared\Infrastructure\Metric\MetricInterface**
 
-####Проверки
+#### Проверки
+
 Доступны две проверки:
 
 _/check/health_ - всегда отвечает **200**
 
 _/check/readiness_ - отвечает **200**, если есть соединение до базы, иначе - **500**
 
-###TESTS
+### TESTS
 
 Тесты запускаются в специальном контейнере **sut**
 
