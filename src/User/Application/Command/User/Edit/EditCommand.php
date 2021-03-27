@@ -5,23 +5,22 @@ declare(strict_types=1);
 namespace App\User\Application\Command\User\Edit;
 
 use App\User\Domain\Aggregate\User\User;
+use App\User\Domain\Aggregate\User\UserRole;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class EditCommand
 {
-    /**
-     * @Assert\NotBlank()
-     */
+    #[Assert\NotBlank]
     public string $id;
 
-    #[\Symfony\Component\Validator\Constraints\Email]
+    #[Assert\Email]
     public string $email;
 
-    /**
-     * @Assert\Choice(choices=App\User\Domain\Aggregate\User\UserRole::VALUES, multiple=true)
-     */
+    #[Assert\Choice(choices: UserRole::VALUES, multiple: true)]
     public array $roles;
 
+    #[Pure]
     public static function createFromUser(User $user): self
     {
         $command = new self();

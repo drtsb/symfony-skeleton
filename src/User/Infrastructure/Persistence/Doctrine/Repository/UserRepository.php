@@ -35,13 +35,13 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
 
     public function findAllActiveUsers(): array
     {
-        return $this->findBy(['status.value' => UserStatus::ACTIVE,]);
+        return $this->findBy(['status.value' => UserStatus::ACTIVE]);
     }
 
     public function findActiveUserByEmail(string $email): ?User
     {
         /** @var User $user */
-        $user = $this->findOneBy(['email.value' => $email, 'status.value' => UserStatus::ACTIVE,]);
+        $user = $this->findOneBy(['email.value' => $email, 'status.value' => UserStatus::ACTIVE]);
 
         return $user;
     }
@@ -68,7 +68,7 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
      */
     public function getByEmail(string $email): User
     {
-        $user = $this->findOneBy(['email.value' => $email,]);
+        $user = $this->findOneBy(['email.value' => $email]);
         if ($user === null || !$user instanceof User) {
             throw new EntityNotFoundException(sprintf('Unable to find user with email `%s`.', $email));
         }

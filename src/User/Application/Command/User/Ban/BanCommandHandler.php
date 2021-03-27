@@ -11,8 +11,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class BanCommandHandler implements CommandHandlerInterface
 {
-    public function __construct(private UserRepositoryInterface $repository, private EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private UserRepositoryInterface $repository,
+        private EntityManagerInterface $entityManager
+    ) {
     }
 
     /**

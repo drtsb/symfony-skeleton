@@ -8,12 +8,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class ShowQuery
 {
-    public function __construct(
-        /**
-         * @Assert\NotBlank()
-         */
-        public string $id
-    )
+    #[Assert\NotBlank]
+    public string $id;
+
+    public function __construct(string $id)
     {
+        $this->id = $id;
     }
 }

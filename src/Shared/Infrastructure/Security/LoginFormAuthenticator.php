@@ -8,6 +8,7 @@ use App\Shared\Domain\Event\User\UserLoggedInEvent;
 use BadMethodCallException;
 use DateTimeImmutable;
 use Exception;
+use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -31,8 +32,11 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public const LOGIN_ROUTE = 'security.login';
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator, private CsrfTokenManagerInterface $csrfTokenManager, private MessageBusInterface $eventBus)
-    {
+    public function __construct(
+        private UrlGeneratorInterface $urlGenerator,
+        private CsrfTokenManagerInterface $csrfTokenManager,
+        private MessageBusInterface $eventBus
+    ) {
     }
 
     public function supports(Request $request): bool
@@ -46,6 +50,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      * @return array
      * @throws BadMethodCallException
      */
+    #[ArrayShape(['email' => "mixed", 'password' => "mixed", 'csrf_token' => "mixed"])]
     public function getCredentials(Request $request): array
     {
         $credentials = [

@@ -24,11 +24,11 @@ final class UserDto extends DataTransferObject
     {
         return new self(
             [
-                'id'            => $user->getId()->getValue(),
-                'email'         => $user->getEmail()->getValue(),
-                'createdAt'     => $user->getCreatedAt(),
-                'status'        => $user->getStatus()->getValue(),
-                'roles'         => $user->getRoles(),
+                'id'        => $user->getId()->getValue(),
+                'email'     => $user->getEmail()->getValue(),
+                'createdAt' => $user->getCreatedAt(),
+                'status'    => $user->getStatus()->getValue(),
+                'roles'     => $user->getRoles(),
             ]
         );
     }

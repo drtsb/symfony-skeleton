@@ -13,8 +13,10 @@ use InvalidArgumentException;
 
 final class EditCommandHandler implements CommandHandlerInterface
 {
-    public function __construct(private UserRepositoryInterface $repository, private EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private UserRepositoryInterface $repository,
+        private EntityManagerInterface $entityManager
+    ) {
     }
 
     /**
