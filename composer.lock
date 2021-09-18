@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7250b0c61824fc450e594bd4ef04960",
+    "content-hash": "a46a921e9970bc9e107751944bc043aa",
     "packages": [
         {
             "name": "brick/math",
@@ -1653,12 +1653,12 @@
             "version": "v2.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/simPod/prometheus_client_php.git",
+                "url": "https://github.com/PromPHP/prometheus_client_php.git",
                 "reference": "5d27b6d84900d9b3208b5b6bf88d10ed0dc7a154"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simPod/prometheus_client_php/zipball/5d27b6d84900d9b3208b5b6bf88d10ed0dc7a154",
+                "url": "https://api.github.com/repos/PromPHP/prometheus_client_php/zipball/5d27b6d84900d9b3208b5b6bf88d10ed0dc7a154",
                 "reference": "5d27b6d84900d9b3208b5b6bf88d10ed0dc7a154",
                 "shasum": ""
             },
@@ -1697,11 +1697,7 @@
                     "Prometheus\\": "src/Prometheus/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Test\\Prometheus\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1713,7 +1709,8 @@
             ],
             "description": "Prometheus instrumentation library for PHP applications.",
             "support": {
-                "source": "https://github.com/simPod/prometheus_client_php/tree/v2.2.2"
+                "issues": "https://github.com/PromPHP/prometheus_client_php/issues",
+                "source": "https://github.com/PromPHP/prometheus_client_php/tree/v2.2.2"
             },
             "time": "2021-03-05T08:54:14+00:00"
         },
@@ -8845,6 +8842,47 @@
                 }
             ],
             "time": "2021-07-27T04:28:53+00:00"
+        },
+        {
+            "name": "symplify/config-transformer",
+            "version": "9.4.62",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symplify/config-transformer.git",
+                "reference": "38cb8a864d28a3b62b61657a61e9ab6740773480"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/38cb8a864d28a3b62b61657a61e9ab6740773480",
+                "reference": "38cb8a864d28a3b62b61657a61e9ab6740773480",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "bin": [
+                "bin/config-transformer"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Prefixed version of Symfony YAML/XML to PHP/YAML config converter",
+            "support": {
+                "source": "https://github.com/symplify/config-transformer/tree/9.4.62"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-09-18T08:46:22+00:00"
         },
         {
             "name": "theseer/tokenizer",
