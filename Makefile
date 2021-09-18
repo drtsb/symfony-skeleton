@@ -54,10 +54,6 @@ tests-down: ## Stop and remove test containers, networks and images
 check: ## Execute app code check
 	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps --rm --entrypoint="/app/docker/app/run-analysis.sh" app
 
-pre-push: ## Execute app code check and tests
-	make check
-	make tests
-
 down: ## Stop and remove containers, networks and images
 	$(dc_bin) down -t 5
 

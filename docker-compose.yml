@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./docker/app/Dockerfile
       args:
-        ADDITIONAL_PACKAGES: "php8.0-xdebug"
+        ADDITIONAL_PACKAGES: "php8.0-xdebug git"
     env_file: .env
     volumes:
       - .:/app:delegated

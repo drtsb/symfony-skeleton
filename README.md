@@ -1,4 +1,4 @@
-Symfony DDD Skeleton
+Symfony Skeleton
 ====================
 
 ### Структура Каталогов

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\User\UI\Command;
 
 use App\User\Application\Command\User\Delete\DeleteCommand;
-use App\Shared\UI\Command\Command;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,13 +17,13 @@ use Throwable;
 
 final class DeleteUserCommand extends Command
 {
-    public const COMMAND_NAME = 'app:user:delete';
-
     private const ARGUMENT_ID = 'id';
+
+    protected static $defaultName = 'app:user:delete';
 
     public function __construct(private MessageBusInterface $commandBus)
     {
-        parent::__construct(self::COMMAND_NAME);
+        parent::__construct();
     }
 
     /**
@@ -65,6 +65,6 @@ final class DeleteUserCommand extends Command
             $io->error('Failed to delete user: ' . $exception->getMessage());
         }
 
-        return $this->returnCode;
+        return self::SUCCESS;
     }
 }

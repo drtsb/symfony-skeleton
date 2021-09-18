@@ -1,4 +1,0 @@
-doctrine:
-    dbal:
-        types:
-            uuid: 'App\Shared\Infrastructure\Persistence\Doctrine\Type\UuidType'

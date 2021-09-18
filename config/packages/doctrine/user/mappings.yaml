@@ -1,8 +1,0 @@
-doctrine:
-    orm:
-        mappings:
-            User:
-                type: xml
-                dir: '%kernel.project_dir%/src/User/Infrastructure/Persistence/Doctrine/Mapping/User'
-                prefix: 'App\User\Domain\Aggregate\User'
-                alias: User

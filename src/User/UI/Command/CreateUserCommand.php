@@ -6,7 +6,7 @@ namespace App\User\UI\Command;
 
 use App\User\Application\Command\User\Create\CreateCommand;
 use App\User\Domain\Aggregate\User\UserRole;
-use App\Shared\UI\Command\Command;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\LogicException;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,11 +19,11 @@ use Throwable;
 
 final class CreateUserCommand extends Command
 {
-    public const COMMAND_NAME = 'app:user:create';
+    protected static $defaultName = 'app:user:create';
 
     public function __construct(private MessageBusInterface $commandBus)
     {
-        parent::__construct(self::COMMAND_NAME);
+        parent::__construct();
     }
 
     protected function configure(): void
@@ -72,6 +72,6 @@ final class CreateUserCommand extends Command
             $io->error('Failed to create user: ' . $exception->getMessage());
         }
 
-        return $this->returnCode;
+        return self::SUCCESS;
     }
 }

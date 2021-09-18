@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\User\UI\Command;
 
 use App\User\Application\Command\User\Ban\BanCommand;
-use App\Shared\UI\Command\Command;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,13 +17,13 @@ use Throwable;
 
 final class BanUserCommand extends Command
 {
-    public const COMMAND_NAME = 'app:user:ban';
-
     private const ARGUMENT_ID = 'id';
+
+    protected static $defaultName = 'app:user:ban';
 
     public function __construct(private MessageBusInterface $commandBus)
     {
-        parent::__construct(self::COMMAND_NAME);
+        parent::__construct();
     }
 
     /**
@@ -65,6 +65,6 @@ final class BanUserCommand extends Command
             $io->error('Failed to ban user: ' . $exception->getMessage());
         }
 
-        return $this->returnCode;
+        return self::SUCCESS;
     }
 }

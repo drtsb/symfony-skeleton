@@ -6,18 +6,18 @@ namespace App\User\UI\Command;
 
 use App\User\Domain\Aggregate\User\User;
 use App\User\Domain\Repository\UserRepositoryInterface;
-use App\Shared\UI\Command\Command;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 final class ListUsersCommand extends Command
 {
-    public const COMMAND_NAME = 'app:user:list';
+    protected static $defaultName = 'app:user:list';
 
     public function __construct(private UserRepositoryInterface $userRepository)
     {
-        parent::__construct(self::COMMAND_NAME);
+        parent::__construct();
     }
 
     protected function configure(): void
@@ -58,6 +58,6 @@ final class ListUsersCommand extends Command
         ;
         $table->render();
 
-        return $this->returnCode;
+        return self::SUCCESS;
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\UI\Command\Init;
 
 use App\Shared\Application\Initializer\InitializerInterface;
-use App\Shared\UI\Command\Command;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -21,9 +21,10 @@ abstract class InitCommand extends Command
             $io->success(sprintf('%s initialization successfully completed.', $this->getTitle()));
         } catch (Throwable $exception) {
             $io->error(sprintf('Failed to initialize %s: %s', $this->getTitle(), $exception->getMessage()));
+            return self::FAILURE;
         }
 
-        return $this->returnCode;
+        return self::SUCCESS;
     }
 
     abstract protected function getTitle(): string;
