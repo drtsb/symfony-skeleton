@@ -1,5 +1,5 @@
-FROM composer:2.0.9 AS composer
-FROM debian:buster-slim
+FROM composer:2.1.8 AS composer
+FROM debian:bullseye-slim
 
 ENV PHP_VERSION 8.0
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -12,7 +12,7 @@ RUN set -ex && \
     apt-get -qy upgrade && \
     apt-get install -qy wget curl gnupg2 apt-utils apt-transport-https ca-certificates && \
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list  && \
+    echo "deb https://packages.sury.org/php/ bullseye main" > /etc/apt/sources.list.d/php.list  && \
     apt-get -q update && \
     apt-get -qy install --no-install-recommends \
     supervisor zip unzip aspell aspell-ru netcat \
@@ -48,7 +48,7 @@ WORKDIR /app
 RUN chown -R nginx:nginx /app && \
     chmod +x /app/docker/app/*.sh && \
     chmod +x /app-entrypoint.sh && \
-    su nginx -c "composer install -o" && \
+    su nginx -c "composer install -o  --no-scripts --no-interaction --no-progress" && \
     su nginx -c "rm -rf ~/.composer/cache/" && \
     cat .env.test > .env && \
     su nginx -c "php bin/console assets:install" && \

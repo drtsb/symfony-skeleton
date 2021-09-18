@@ -14,36 +14,31 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
-        "endclothing/prometheus_client_php": "dev-simPod-patch-1",
+        "promphp/prometheus_client_php": "^2.2",
         "ramsey/uuid": "^4.1",
-        "symfony/asset": "5.2.*",
-        "symfony/console": "5.2.*",
-        "symfony/dotenv": "5.2.*",
+        "symfony/asset": "5.3.*",
+        "symfony/console": "5.3.*",
+        "symfony/dotenv": "5.3.*",
         "symfony/flex": "^1.3.1",
-        "symfony/framework-bundle": "5.2.*",
-        "symfony/proxy-manager-bridge": "5.2.*",
-        "symfony/twig-bundle": "5.2.*",
-        "symfony/yaml": "5.2.*"
+        "symfony/framework-bundle": "5.3.*",
+        "symfony/proxy-manager-bridge": "5.3.*",
+        "symfony/twig-bundle": "5.3.*",
+        "symfony/yaml": "5.3.*"
     },
     "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.8",
         "codeception/codeception": "^4.1",
         "codeception/module-asserts": "^1.3",
         "codeception/module-symfony": "^1.3",
         "jetbrains/phpstorm-attributes": "^1.0",
         "phpstan/phpstan": "^0.12.54",
         "qossmic/deptrac-shim": "^0.11.0",
-        "roave/security-advisories": "dev-master",
+        "roave/security-advisories": "dev-latest",
         "squizlabs/php_codesniffer": "^3.6",
         "symfony/maker-bundle": "^1.29",
-        "symfony/stopwatch": "^5.2",
-        "symfony/web-profiler-bundle": "^5.2"
+        "symfony/stopwatch": "^5.3",
+        "symfony/web-profiler-bundle": "^5.3"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "https://github.com/simPod/prometheus_client_php"
-        }
-    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
@@ -72,11 +67,15 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "cghooks update"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
-        ]
+            "@auto-scripts",
+            "cghooks update"
+        ],
+        "phpcs": "phpcs --standard=PSR12",
+        "cghooks": "vendor/bin/cghooks"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -84,7 +83,31 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.2.*"
+            "require": "5.3.*"
+        },
+        "hooks": {
+            "config": {
+                "stop-on-failure": [
+                    "pre-push",
+                    "pre-commit"
+                ]
+            },
+            "post-checkout": [
+                "[ \"$SKIP_HOOKS\" = 1 ] && exit 0",
+                "docker-compose run --rm -e XDEBUG_MODE=develop --no-deps --entrypoint=\"\" app composer install --no-interaction --ansi --prefer-dist"
+            ],
+            "post-merge": [
+                "[ \"$SKIP_HOOKS\" = 1 ] && exit 0",
+                "docker-compose run --rm -e XDEBUG_MODE=develop --no-deps --entrypoint=\"\" app composer install --no-interaction --ansi --prefer-dist"
+            ],
+            "pre-commit": [
+                "docker-compose run --rm -e XDEBUG_MODE=develop --no-deps --entrypoint=\\\"/app/docker/app/run-analysis.sh\\\" app"
+            ],
+            "pre-push": [
+                "set -e",
+                "docker-compose -f docker-compose.test.yml run --rm --entrypoint=\\\"/app/docker/app/run-tests.sh\\\" sut",
+                "docker-compose -f docker-compose.test.yml down"
+            ]
         }
     }
 }
