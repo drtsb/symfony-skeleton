@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Shared\Domain\ValueObject;
 
 use JetBrains\PhpStorm\Pure;
+use Stringable;
 
-abstract class StringValueObject
+abstract class StringValueObject implements Stringable
 {
     protected string $value;
 
