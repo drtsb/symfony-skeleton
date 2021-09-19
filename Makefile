@@ -70,7 +70,6 @@ build:
 	$(dc_bin) down --remove-orphans
 	$(dc_bin) build
 	$(dc_bin) up -d
-	make composer-install
 
 build-app:
 	$(dc_bin) build --no-cache app
