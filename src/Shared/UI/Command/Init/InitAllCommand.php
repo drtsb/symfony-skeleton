@@ -13,11 +13,8 @@ final class InitAllCommand extends Command
 {
     protected static $defaultName = 'app:init:all';
 
-    private iterable $initCommands;
-
-    public function __construct(iterable $initCommands)
+    public function __construct(private iterable $initCommands)
     {
-        $this->initCommands = $initCommands;
         parent::__construct();
     }
 
