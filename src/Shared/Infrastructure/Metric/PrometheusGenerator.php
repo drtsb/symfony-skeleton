@@ -10,11 +10,8 @@ use Prometheus\Exception\MetricsRegistrationException;
 
 final class PrometheusGenerator implements PrometheusGeneratorInterface
 {
-    private iterable $metrics;
-
-    public function __construct(iterable $metrics)
+    public function __construct(private iterable $metrics)
     {
-        $this->metrics = $metrics;
     }
 
     /**

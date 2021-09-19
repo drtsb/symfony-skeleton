@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain\ValueObject;
 
+use JetBrains\PhpStorm\Pure;
+
 abstract class StringValueObject
 {
     protected string $value;
@@ -18,8 +20,9 @@ abstract class StringValueObject
         return $this->value;
     }
 
+    #[Pure]
     public function equalsTo(self $other): bool
     {
-        return $other instanceof static && $this->getValue() === $other->getValue();
+        return $this->getValue() === $other->getValue();
     }
 }
