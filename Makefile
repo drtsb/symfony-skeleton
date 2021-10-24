@@ -70,7 +70,7 @@ install: ## Install all app dependencies
 	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer install --no-interaction --ansi --prefer-dist
 
 update: ## Update all app dependencies
-	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer update slevomat/coding-standard -n --ansi --prefer-dist
+	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer update -n --ansi --prefer-dist
 
 require:
 	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer require
