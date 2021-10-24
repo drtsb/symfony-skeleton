@@ -17,6 +17,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'cookie_samesite' => 'lax',
             ],
             'php_errors' => ['log' => true],
-        ]
+        ],
     );
 };

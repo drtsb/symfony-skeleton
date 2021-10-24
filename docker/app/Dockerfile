@@ -1,10 +1,11 @@
-FROM composer:2.1.8 AS composer
+FROM composer:2.1.9 AS composer
 FROM debian:bullseye-slim
 
 ENV PHP_VERSION 8.0
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ARG ADDITIONAL_PACKAGES
-ENV ADDITIONAL_PACKAGES=${ADDITIONAL_PACKAGES}
+ARG USER
+#ENV ADDITIONAL_PACKAGES=${ADDITIONAL_PACKAGES}
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN set -ex && \
@@ -30,8 +31,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN ln -sf /dev/stderr /tmp/php${PHP_VERSION}-fpm.log
 
-RUN groupadd -g 1008 nginx && \
-    useradd -u 1008 -g 1008 nginx && \
+RUN groupadd -g ${USER} nginx && \
+    useradd -u ${USER} -g ${USER} nginx && \
     mkdir /run/php && \
     mkdir -p /home/nginx/.composer && \
     chown -R nginx:nginx /home/nginx && \

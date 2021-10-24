@@ -7,6 +7,7 @@ services:
       dockerfile: ./docker/app/Dockerfile
       args:
         ADDITIONAL_PACKAGES: "php8.0-xdebug git"
+        USER: ${USER}
     env_file: .env
     volumes:
       - .:/app:delegated

@@ -24,7 +24,7 @@ return static function (ContainerConfigurator $di): void {
         ->exclude(
             [
                 '../{Kernel.php}',
-            ]
+            ],
         );
 
     $services->load('App\Shared\UI\Controller\\', 'UI/Controller')

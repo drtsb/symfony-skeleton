@@ -44,13 +44,13 @@ make init
 #### Миграции
 Общие миграции хранятся в _src/Shared/Infrastructure/Persistence/Doctrine/Migration_.
 
-Для модулей в _src/-ModuleName-/Infrastructure/Persistence/Doctrine/Migration_. При добавлении нового модуля необходимо прописать путь к каталогу с миграциями в _config/packages/doctrine_migrations.yaml_
+Для модулей в _src/-ModuleName-/Infrastructure/Persistence/Doctrine/Migration_. При добавлении нового модуля необходимо прописать путь к каталогу с миграциями в _config/packages/doctrine_migrations.php_
 
 В postgres можно разделять таблицы из разных модулей с помощью схем.
 
 #### Doctrine
 Маппинги и кастомные типы хранятся в _src/-ModuleName-/Infrastructure/Persistence/Doctrine_
-Их необходимо регистрировать в _config/packages/doctrine/-module-name-/mappings.yaml_ и _config/packages/doctrine/-module-name-/types.yaml_ соответственно.
+Их необходимо регистрировать в _config/packages/doctrine/-module-name-/mappings.php_ и _config/packages/doctrine/-module-name-/types.php_ соответственно.
 
 #### Консольные команды
 

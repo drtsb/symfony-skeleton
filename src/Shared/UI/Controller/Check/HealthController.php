@@ -17,7 +17,7 @@ final class HealthController extends AbstractController
         return new JsonResponse(
             [
                 'application' => 'ok',
-            ]
+            ],
         );
     }
 }

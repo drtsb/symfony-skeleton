@@ -56,6 +56,9 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
+    "dealerdirect/phpcodesniffer-composer-installer": {
+        "version": "v0.7.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -170,6 +173,9 @@
     },
     "phpspec/prophecy": {
         "version": "1.12.2"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "0.5.6"
     },
     "phpstan/phpstan": {
         "version": "0.12.80"
@@ -286,6 +292,9 @@
     },
     "sebastian/version": {
         "version": "3.0.2"
+    },
+    "slevomat/coding-standard": {
+        "version": "7.0.15"
     },
     "squizlabs/php_codesniffer": {
         "version": "3.0",

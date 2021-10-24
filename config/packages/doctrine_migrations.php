@@ -13,6 +13,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'App\Shared\Infrastructure\Persistence\Doctrine\Migration'
                 => '%kernel.project_dir%/src/Shared/Infrastructure/Persistence/Doctrine/Migration',
             ],
-        ]
+        ],
     );
 };
