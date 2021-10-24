@@ -29,7 +29,7 @@ final class UserDto extends DataTransferObject
                 'createdAt' => $user->getCreatedAt(),
                 'status'    => $user->getStatus()->getValue(),
                 'roles'     => $user->getRoles(),
-            ]
+            ],
         );
     }
 }

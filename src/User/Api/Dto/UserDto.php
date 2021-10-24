@@ -32,12 +32,12 @@ final class UserDto extends DataTransferObject
                     static function ($value) {
                         return (string)$value;
                     },
-                    $user->getRoles()
+                    $user->getRoles(),
                 ),
                 'lastLoginTime' => $user->getLastLoginTime() ?
                     $user->getLastLoginTime()->format(self::DATE_FORMAT) :
                     null,
-            ]
+            ],
         );
     }
 }

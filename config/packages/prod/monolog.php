@@ -27,6 +27,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'channels'               => ['!event', '!doctrine'],
                 ],
             ],
-        ]
+        ],
     );
 };

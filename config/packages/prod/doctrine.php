@@ -23,7 +23,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'pool' => 'doctrine.result_cache_pool',
                 ],
             ],
-        ]
+        ],
     );
 
     $containerConfigurator->extension(
@@ -35,6 +35,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'doctrine.system_cache_pool' => ['adapter' => 'cache.system'],
                 ],
             ],
-        ]
+        ],
     );
 };

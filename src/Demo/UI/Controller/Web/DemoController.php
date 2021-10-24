@@ -18,7 +18,7 @@ final class DemoController extends AbstractController
             'demo/demo/users.html.twig',
             [
                 'users' => $userAdapter->findActiveUsers(),
-            ]
+            ],
         );
     }
 }

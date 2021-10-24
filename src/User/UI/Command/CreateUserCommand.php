@@ -53,7 +53,7 @@ final class CreateUserCommand extends Command
             $command->password = (string)$helper->ask(
                 $input,
                 $output,
-                (new Question('Please enter the password: '))->setHidden(true)
+                (new Question('Please enter the password: '))->setHidden(true),
             );
             $command->roles = (array)$helper->ask(
                 $input,
@@ -61,8 +61,8 @@ final class CreateUserCommand extends Command
                 (new ChoiceQuestion(
                     sprintf('Please select user roles (defaults to %s): ', UserRole::ROLE_USER),
                     UserRole::VALUES,
-                    '1'
-                ))->setMultiselect(true)
+                    '1',
+                ))->setMultiselect(true),
             );
 
             $this->commandBus->dispatch($command);

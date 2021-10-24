@@ -15,6 +15,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'App\User\Infrastructure\Persistence\Doctrine\Migration'   =>
                     '%kernel.project_dir%/src/User/Infrastructure/Persistence/Doctrine/Migration',
             ],
-        ]
+        ],
     );
 };

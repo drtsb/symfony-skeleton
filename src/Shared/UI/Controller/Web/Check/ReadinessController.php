@@ -33,7 +33,7 @@ final class ReadinessController extends AbstractController
             [
                 'database' => $dbIsReady,
             ],
-            $dbIsReady ? Response::HTTP_OK : Response::HTTP_INTERNAL_SERVER_ERROR
+            $dbIsReady ? Response::HTTP_OK : Response::HTTP_INTERNAL_SERVER_ERROR,
         );
     }
 }

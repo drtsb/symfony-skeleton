@@ -27,7 +27,7 @@ final class CreateForm extends AbstractType
                     'choices'  => array_combine(UserRole::VALUES, UserRole::VALUES),
                     'expanded' => true,
                     'multiple' => true,
-                ]
+                ],
             );
     }
 
@@ -40,7 +40,7 @@ final class CreateForm extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => CreateCommand::class,
-            ]
+            ],
         );
     }
 }

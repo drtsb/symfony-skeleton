@@ -35,7 +35,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
         private CsrfTokenManagerInterface $csrfTokenManager,
-        private MessageBusInterface $eventBus
+        private MessageBusInterface $eventBus,
     ) {
     }
 
@@ -63,7 +63,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if ($session !== null) {
             $session->set(
                 Security::LAST_USERNAME,
-                $credentials['email']
+                $credentials['email'],
             );
         }
 
@@ -95,13 +95,14 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function onAuthenticationSuccess(
         Request $request,
         TokenInterface $token,
-        string $providerKey
+        string $providerKey,
     ): RedirectResponse {
         $this->eventBus->dispatch(
-            UserLoggedInEvent::create($token->getUser()->getUsername(), new DateTimeImmutable())
+            UserLoggedInEvent::create($token->getUser()->getUsername(), new DateTimeImmutable()),
         );
 
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
+        if ($targetPath) {
             return new RedirectResponse($targetPath);
         }
 

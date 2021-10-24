@@ -43,7 +43,7 @@ final class EditController extends AbstractController
             'user/user/edit.html.twig',
             [
                 'form' => $form->createView(),
-            ]
+            ],
         );
     }
 }

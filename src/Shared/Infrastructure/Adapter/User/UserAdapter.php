@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Adapter\User;
 
-use App\User\Api\UserApiInterface;
 use App\Shared\Infrastructure\Adapter\User\Dto\UserAuthenticationDto;
+use App\User\Api\UserApiInterface;
 
 final class UserAdapter implements UserAdapterInterface
 {

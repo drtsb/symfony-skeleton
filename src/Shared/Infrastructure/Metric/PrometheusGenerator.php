@@ -25,7 +25,7 @@ final class PrometheusGenerator implements PrometheusGeneratorInterface
             $gauge = $registry->getOrRegisterGauge(
                 $metric->getNamespace(),
                 $metric->getName(),
-                $metric->getHelp()
+                $metric->getHelp(),
             );
             $gauge->set($metric->getValue(), $metric->getLabels());
         }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\Application\Query\User\Index;
 
-use App\User\Domain\Repository\UserRepositoryInterface;
 use App\Shared\Infrastructure\MessageBus\QueryHandlerInterface;
+use App\User\Domain\Repository\UserRepositoryInterface;
 
 final class IndexQueryHandler implements QueryHandlerInterface
 {

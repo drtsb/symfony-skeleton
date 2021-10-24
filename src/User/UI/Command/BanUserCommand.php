@@ -37,7 +37,7 @@ final class BanUserCommand extends Command
             ->addArgument(
                 self::ARGUMENT_ID,
                 InputArgument::REQUIRED,
-                'User ID'
+                'User ID',
             )
         ;
     }

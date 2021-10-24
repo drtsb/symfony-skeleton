@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\User\Application\Command\User\Edit;
 
-use App\User\Domain\Aggregate\User\UserEmail;
-use App\User\Domain\Repository\UserRepositoryInterface;
 use App\Shared\Domain\Exception\EntityNotFoundException;
 use App\Shared\Infrastructure\MessageBus\CommandHandlerInterface;
+use App\User\Domain\Aggregate\User\UserEmail;
+use App\User\Domain\Repository\UserRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use InvalidArgumentException;
 
@@ -15,7 +15,7 @@ final class EditCommandHandler implements CommandHandlerInterface
 {
     public function __construct(
         private UserRepositoryInterface $repository,
-        private EntityManagerInterface $entityManager
+        private EntityManagerInterface $entityManager,
     ) {
     }
 

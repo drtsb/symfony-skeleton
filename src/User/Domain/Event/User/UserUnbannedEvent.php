@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Event\User;
 
-use App\User\Domain\Aggregate\User\User;
 use App\Shared\Domain\Event\DomainEventInterface;
+use App\User\Domain\Aggregate\User\User;
 
 final class UserUnbannedEvent implements DomainEventInterface
 {

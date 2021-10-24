@@ -19,7 +19,7 @@ final class MetricsController extends AbstractController
 
     public function __construct(
         private PrometheusMetricsServiceInterface $prometheusMetricsService,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
     ) {
     }
 
@@ -40,7 +40,7 @@ final class MetricsController extends AbstractController
                     'statusCode' => $response->getStatusCode(),
                     'category'   => static::LOG_CATEGORY,
                     'trace'      => $exception->getTraceAsString(),
-                ]
+                ],
             );
         }
         return $response;

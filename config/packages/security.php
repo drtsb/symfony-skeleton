@@ -45,6 +45,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 ['path' => '^/user', 'roles' => 'ROLE_ADMIN'],
                 ['path' => '^/', 'roles' => 'ROLE_USER'],
             ],
-        ]
+        ],
     );
 };

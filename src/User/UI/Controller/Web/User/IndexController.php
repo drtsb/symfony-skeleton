@@ -33,7 +33,7 @@ final class IndexController extends AbstractController
             'user/user/index.html.twig',
             [
                 'users' => $result->users,
-            ]
+            ],
         );
     }
 }

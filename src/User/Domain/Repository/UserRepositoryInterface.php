@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Repository;
 
-use App\User\Domain\Aggregate\User\User;
-use App\User\Domain\Exception\User\UserAlreadyExistsException;
 use App\Shared\Domain\Exception\EntityNotAddedException;
 use App\Shared\Domain\Exception\EntityNotFoundException;
+use App\User\Domain\Aggregate\User\User;
+use App\User\Domain\Exception\User\UserAlreadyExistsException;
 
 interface UserRepositoryInterface
 {

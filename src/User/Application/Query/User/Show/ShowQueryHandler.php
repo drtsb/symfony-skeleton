@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\User\Application\Query\User\Show;
 
-use App\User\Domain\Repository\UserRepositoryInterface;
 use App\Shared\Domain\Exception\EntityNotFoundException;
 use App\Shared\Infrastructure\MessageBus\QueryHandlerInterface;
+use App\User\Domain\Repository\UserRepositoryInterface;
 
 final class ShowQueryHandler implements QueryHandlerInterface
 {

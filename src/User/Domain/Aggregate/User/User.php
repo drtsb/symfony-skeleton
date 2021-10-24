@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Aggregate\User;
 
-use App\User\Domain\Event\User\UserBannedEvent;
-use App\User\Domain\Event\User\UserUnbannedEvent;
 use App\Shared\Domain\Entity\AggregateRoot;
 use App\Shared\Domain\ValueObject\Uuid;
+use App\User\Domain\Event\User\UserBannedEvent;
+use App\User\Domain\Event\User\UserUnbannedEvent;
 use DateTimeImmutable;
 use DateTimeInterface;
 use InvalidArgumentException;
@@ -23,7 +23,7 @@ final class User extends AggregateRoot
         private UserEmail $email,
         private UserPasswordHash $passwordHash,
         private UserStatus $status,
-        private ?DateTimeInterface $lastLoginTime = null
+        private ?DateTimeInterface $lastLoginTime = null,
     ) {
     }
 
@@ -35,14 +35,14 @@ final class User extends AggregateRoot
      */
     public static function create(
         UserEmail $email,
-        UserPasswordHash $passwordHash
+        UserPasswordHash $passwordHash,
     ): self {
         return new self(
             Uuid::random(),
             new DateTimeImmutable(),
             $email,
             $passwordHash,
-            UserStatus::active()
+            UserStatus::active(),
         );
     }
 

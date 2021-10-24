@@ -27,7 +27,7 @@ final class UserAuthenticationDto extends DataTransferObject
                 'email'        => $dto->email,
                 'passwordHash' => $dto->passwordHash,
                 'roles'        => $dto->roles,
-            ]
+            ],
         );
     }
 }

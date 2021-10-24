@@ -40,20 +40,6 @@ up: ## Create and start containers
 	$(call print_block, 'RabbitMQ web admin (guest:guest) ⇒ http://127.0.0.1:15672/#/queues')
 	$(call print_block, 'Additional ports (available for connections) - PostgreSQL ⇒ 5432; Redis ⇒ 6379')
 
-tests: ## Execute app tests, can use param to proxy `in codeception run`
-	$(dc_bin) -f docker-compose.test.yml run --rm --entrypoint="/app/docker/app/run-tests.sh $(filter-out tests-dev,$(MAKECMDGOALS))" sut
-	make tests-down
-
-tests-shell: ## Run shell for tests
-	$(dc_bin) -f docker-compose.test.yml run --rm --entrypoint="/app/docker/app/tests-shell-entrypoint.sh" sut
-	make tests-down
-
-tests-down: ## Stop and remove test containers, networks and images
-	$(dc_bin) -f docker-compose.test.yml down
-
-check: ## Execute app code check
-	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps --rm --entrypoint="/app/docker/app/run-analysis.sh" app
-
 down: ## Stop and remove containers, networks and images
 	$(dc_bin) down -t 5
 
@@ -84,13 +70,13 @@ install: ## Install all app dependencies
 	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer install --no-interaction --ansi --prefer-dist
 
 update: ## Update all app dependencies
-	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer update -n --ansi --prefer-dist
+	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer update slevomat/coding-standard -n --ansi --prefer-dist
 
 require:
-	$(dc_bin) exec $(dc_app_name) composer require
+	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer require
 
 require-dev:
-	$(dc_bin) exec $(dc_app_name) composer require --dev
+	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps $(RUN_APP_ARGS) composer require --dev
 
 enter:
 	$(dc_bin) exec $(dc_app_name) bash
@@ -98,14 +84,25 @@ enter:
 exec:
 	$(dc_bin) exec $(dc_app_name) php bin/console $(command)
 
-migrate:
-	make exec doctrine:migration:migrate
+tail-logs:
+	$(dc_bin) logs -f $(dc_app_name)
 
-migrate-create:
-	make exec doctrine:migration:diff
+check: ## Execute app code check
+	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps --rm --entrypoint="/app/docker/app/run-analysis.sh" app
+
+fix: ## Execute app code style fix
+	$(dc_bin) run -e XDEBUG_MODE=develop --no-deps --rm --entrypoint="/app/vendor/bin/phpcbf" app
+
+tests: ## Execute app tests, can use param to proxy `in codeception run`
+	$(dc_bin) -f docker-compose.test.yml run --rm --entrypoint="/app/docker/app/run-tests.sh $(filter-out tests-dev,$(MAKECMDGOALS))" sut
+	make tests-down
+
+tests-shell: ## Run shell for tests
+	$(dc_bin) -f docker-compose.test.yml run --rm --entrypoint="/app/docker/app/tests-shell-entrypoint.sh" sut
+	make tests-down
+
+tests-down: ## Stop and remove test containers, networks and images
+	$(dc_bin) -f docker-compose.test.yml down
 
 test-file:
 	$(dc_bin) exec $(dc_app_name) php /app/vendor/bin/codecept run $(FILE)
-
-tail-logs:
-	$(dc_bin) logs -f $(dc_app_name)

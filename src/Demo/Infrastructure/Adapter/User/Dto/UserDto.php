@@ -16,7 +16,7 @@ final class UserDto extends DataTransferObject
         return new self(
             [
                 'email' => $dto->email,
-            ]
+            ],
         );
     }
 }

@@ -29,7 +29,7 @@ final class ShowController extends AbstractController
             'user/user/show.html.twig',
             [
                 'user' => $handled->getResult(),
-            ]
+            ],
         );
     }
 }

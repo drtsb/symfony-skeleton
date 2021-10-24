@@ -41,7 +41,7 @@ final class NewController extends AbstractController
             'user/user/new.html.twig',
             [
                 'form' => $form->createView(),
-            ]
+            ],
         );
     }
 }

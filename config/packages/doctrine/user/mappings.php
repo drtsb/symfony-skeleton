@@ -18,6 +18,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     ],
                 ],
             ],
-        ]
+        ],
     );
 };

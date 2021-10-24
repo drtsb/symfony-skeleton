@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Persistence\Doctrine\Repository;
 
+use App\Shared\Domain\Exception\EntityNotAddedException;
+use App\Shared\Domain\Exception\EntityNotFoundException;
 use App\User\Domain\Aggregate\User\User;
 use App\User\Domain\Aggregate\User\UserStatus;
 use App\User\Domain\Exception\User\UserAlreadyExistsException;
 use App\User\Domain\Repository\UserRepositoryInterface;
-use App\Shared\Domain\Exception\EntityNotAddedException;
-use App\Shared\Domain\Exception\EntityNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -88,7 +88,7 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
             $this->getEntityManager()->flush();
         } catch (UniqueConstraintViolationException) {
             throw new UserAlreadyExistsException(
-                sprintf('User with email `%s` already exists.', $user->getEmail()->getValue())
+                sprintf('User with email `%s` already exists.', $user->getEmail()->getValue()),
             );
         } catch (Throwable $exception) {
             throw new EntityNotAddedException($exception->getMessage());

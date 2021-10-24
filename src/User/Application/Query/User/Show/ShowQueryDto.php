@@ -35,7 +35,7 @@ final class ShowQueryDto extends DataTransferObject
                 'isBanned'      => $user->isBanned(),
                 'roles'         => $user->getRoles(),
                 'lastLoginTime' => $user->getLastLoginTime(),
-            ]
+            ],
         );
     }
 }

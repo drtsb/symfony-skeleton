@@ -6,7 +6,6 @@ namespace App\User\Infrastructure\Persistence\Repository;
 
 use App\User\Domain\Aggregate\User\User;
 use App\User\Domain\Exception\User\UserAlreadyExistsException;
-use App\User\Domain\Repository\UserRepositoryInterface;
 use Exception;
 use InvalidArgumentException;
 
@@ -58,7 +57,7 @@ final class UserRepositoryInMemory
             }
             if ($existingUser['email'] === (string)$user->getEmail()) {
                 throw new UserAlreadyExistsException(
-                    sprintf('User with email `%s` already exists.', $existingUser['email'])
+                    sprintf('User with email `%s` already exists.', $existingUser['email']),
                 );
             }
         }

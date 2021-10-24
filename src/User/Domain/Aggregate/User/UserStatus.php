@@ -35,8 +35,8 @@ final class UserStatus extends StringValueObject
                 sprintf(
                     'UserStatus should be one of %s, `%s` provided.',
                     json_encode(self::VALUES),
-                    $status
-                )
+                    $status,
+                ),
             );
         }
 

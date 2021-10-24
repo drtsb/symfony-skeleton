@@ -26,7 +26,7 @@ final class Version20201119194949 extends AbstractMigration
                     status VARCHAR(255) NOT NULL,
                     last_login_time TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL,
                     PRIMARY KEY(id)
-            )'
+            )',
         );
         $this->addSql('CREATE UNIQUE INDEX u_user_email ON users.users (email)');
     }

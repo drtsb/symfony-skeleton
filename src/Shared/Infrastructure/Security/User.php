@@ -15,7 +15,7 @@ final class User implements UserInterface
         private UuidInterface $id,
         private string $email,
         private string $passwordHash,
-        private array $roles
+        private array $roles,
     ) {
     }
 
@@ -26,7 +26,7 @@ final class User implements UserInterface
             $dto->id,
             $dto->email,
             $dto->passwordHash,
-            $dto->roles
+            $dto->roles,
         );
     }
 

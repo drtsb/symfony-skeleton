@@ -25,7 +25,7 @@ class EditForm extends AbstractType
                     'choices'  => array_combine(UserRole::VALUES, UserRole::VALUES),
                     'expanded' => true,
                     'multiple' => true,
-                ]
+                ],
             );
     }
 
@@ -38,7 +38,7 @@ class EditForm extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => EditCommand::class,
-            ]
+            ],
         );
     }
 }

@@ -24,7 +24,7 @@ return static function (ContainerConfigurator $di): void {
             [
                 '../{Kernel.php}',
                 '../**/{*CommandHandler.php,*QueryHandler.php,*EventHandler.php}',
-            ]
+            ],
         );
 
     $services

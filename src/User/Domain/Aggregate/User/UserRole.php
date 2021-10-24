@@ -36,8 +36,8 @@ final class UserRole extends StringValueObject implements JsonSerializable
                 sprintf(
                     'UserRole should be one of %s, `%s` provided.',
                     json_encode(self::VALUES),
-                    $role
-                )
+                    $role,
+                ),
             );
         }
         return new self($role);
