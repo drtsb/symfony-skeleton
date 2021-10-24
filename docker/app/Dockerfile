@@ -5,7 +5,6 @@ ENV PHP_VERSION 8.0
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ARG ADDITIONAL_PACKAGES
 ARG USER
-#ENV ADDITIONAL_PACKAGES=${ADDITIONAL_PACKAGES}
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN set -ex && \
@@ -51,9 +50,8 @@ RUN chown -R nginx:nginx /app && \
     chmod +x /app-entrypoint.sh && \
     su nginx -c "composer install -o  --no-scripts --no-interaction --no-progress" && \
     su nginx -c "rm -rf ~/.composer/cache/" && \
-    cat .env.test > .env && \
     su nginx -c "php bin/console assets:install" && \
-    rm -rf /app/var/cache/*
+    su nginx -c "rm -rf var/cache/*"
 
 EXPOSE 9000
 

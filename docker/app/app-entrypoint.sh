@@ -9,8 +9,6 @@ STARTUP_SEED_DATABASE="${STARTUP_SEED_DATABASE:-false}";
 STARTUP_CHECK_MIGRATIONS="${STARTUP_CHECK_MIGRATIONS:-false}";
 STARTUP_START_CONSUMERS="${STARTUP_START_CONSUMERS:-true}";
 
-touch .env
-
 # Migrate app database
 if [[ "$STARTUP_MIGRATE_DATABASE" = "true" ]]; then
   echo '[INFO] Migrate app database';
